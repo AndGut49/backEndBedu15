@@ -1,7 +1,7 @@
 # BackEndFundamentals Equipo 15👨‍💻👩‍💻
 Proyecto de Backend Fundamentals Equipo 15
 
-# Integrantes
+# Integrantes 😎
 * Andrea Gutierrez
 * Pamela Navarro
 * Rafael Santos
