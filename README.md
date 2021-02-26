@@ -66,6 +66,6 @@ Usuario administrador
 - Postre: agregarPostre, modificarPostre, eliminarPostre, obtenerPostre, obtenerPostres y listaPostres
 - Tamaño: agregarTamaño, modificarTamaño, eliminarTamaño, obtenerTamaños 
 - Usuario administrador: agregarUsuario, modificarUsuario, consultarUsuarios, eliminarUsuario y login
-- Solicitud: crearSolicitud, modificarSolicitud, consultarSolicitudes y eliminarSolicitud
+<!-- - Solicitud: crearSolicitud, modificarSolicitud, consultarSolicitudes y eliminarSolicitud -->
  
 
