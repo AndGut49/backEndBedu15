@@ -27,8 +27,8 @@ Nuestro sistema tendrá dos tipos de usuarios:
 - Usuario administrador
 
 # ¿Qué acciones puede realizar cada usuario?
-- Cliente: Podrá consultar precios y existencia de los postres de acuerdo a la Ciudad de consulta.
-- Usuario administrador: Podrá añadir, modificar y eliminar precios de todos los productos.
+- Cliente: Podrá consultar precios y existencia de los postres.
+- Usuario administrador: Podrá añadir, modificar y eliminar precios y existencias de todos los productos.
 
 # ¿Qué información se necesita? 
 Se necesita la información de todos los productos que se manejan:
@@ -59,7 +59,7 @@ Usuario administrador
 - Categoría: agregarCategoria, actualizarCategoria, modificarCategoria y eliminarCategoria
 - Postre: agregarPostre, modificarPostre, eliminarPostre, obtenerPostre, obtenerPostres y listaPostres
 - Tamaño: agregarTamaño, modificarTamaño, eliminarTamaño, obtenerTamaños 
-- Usuario administrador: agregarUsuario, modificarUsuario, consultarUsuarios y eliminarUsuario
+- Usuario administrador: agregarUsuario, modificarUsuario, consultarUsuarios, eliminarUsuario y login
 - Solicitud: crearSolicitud, modificarSolicitud, consultarSolicitudes y eliminarSolicitud
  
 
