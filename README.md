@@ -15,3 +15,51 @@ que ofrece una tienda en cierta ciudad.
 6 - Cómo administrador de tiendaPostres, quiero modificar postres (precios, stock, tamaños).
 7 - Cómo administrador de tiendaPostres, quiero poder eliminar postres.
 8 - Cómo administrador de tiendaPostres, quiero poder consultar todos los postres disponibles aplicando diferentes filtros (tamaño, precio etc..)
+
+# Requerimientos y estructura del proyecto
+ 
+# ¿Qué espero que haga el proyecto? 
+Esperamos que los clientes de una Tienda de Postres puedan consultar los precios y existencia de los postres que se ofrecen de acuerdo a su ciudad.
+
+#¿Qué tipo de usuario tendrá nuestro sistema? 
+Nuestro sistema tendrá dos tipos de usuarios:
+- Cliente
+- Usuario administrador
+
+# ¿Qué acciones puede realizar cada usuario?
+- Cliente: Podrá consultar precios y existencia de los postres de acuerdo a la Ciudad de consulta.
+- Usuario administrador: Podrá añadir, modificar y eliminar precios de todos los productos.
+
+# ¿Qué información se necesita? 
+Se necesita la información de todos los productos que se manejan:
+- Categoría de postre
+- Nombre del postre
+- Tamaño
+- Precios de acuerdo al tamaño
+- Disponibilidad (stock)
+
+# ¿Cuáles son las principales entidades?
+Cliente
+Categoría de postre
+Postre
+Tamaño
+Solicitud
+Usuario administrador
+
+# ¿Qué características tiene cada entidad?
+- Cliente: Se refiere al usuario que quiere consultar los precios y existencia de postres correspondientes a su ciudad de procedencia. (id, nombre, apellido, correo, contraseña)
+- Categoría de postre: Se refiere al tipo de postre (Pasteles, Gelatinas, Pays, Postres, Panqués, Productos de temporada). (id, nombreCategoria)
+- Postre: Se refiere a todos los postres. (id, nombrePostre, precio, stock, calificacion)
+- Tamaño: Se refiere a los tamaños en que se manejan los postres: único, individual, mini, chico y grande (id, nombreTamaño). 
+- Solicitud: Una solicitud puede ser creada por un Cliente para consultar la información sobre los postres, tamaños, precios y existencia de productos que haya subido un administrador.
+- Usuario administrador: Un administrador puede crear, modificar y eliminar información de productos, tamaños y precios que verá el usuario. 
+
+# ¿Qué funcionalidades tiene cada entidad?
+- Cliente: añadirCliente, actualizarDatosCliente, eliminarCliente y pedidosCliente
+- Categoría: agregarCategoria, actualizarCategoria, modificarCategoria y eliminarCategoria
+- Postre: agregarPostre, modificarPostre, eliminarPostre, obtenerPostre, obtenerPostres y listaPostres
+- Tamaño: agregarTamaño, modificarTamaño, eliminarTamaño, obtenerTamaños 
+- Usuario administrador: agregarUsuario, modificarUsuario, consultarUsuarios y eliminarUsuario
+- Solicitud: crearSolicitud, modificarSolicitud, consultarSolicitudes y eliminarSolicitud
+ 
+
