@@ -1,3 +1,8 @@
+/*Clase Postre
+
+Creando clase tiene un id, nombre, precio, stock, 
+calificcion (del 1 al 5)*/
+
 class Postre {
     constructor(id, nombre, precio, stock, calificacion) {
         this.id = id;
