@@ -14,7 +14,6 @@ function crearPostre(req, res) {
 
 function obtenerPostres(req, res) {
     // Simulando dos postres y respondiendolos
-    id, nombre, precio, stock, calificacion
     var postre1 = new Postre(1, 'Tarta frutas', '125', '5','4')
     var postre2 = new Postre(2, 'Pastel zanahoria', '189', '3','3')
     res.send([postre1, postre2])

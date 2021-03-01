@@ -11,7 +11,7 @@ router.get('/', (req, res)=>{
 * que vamos a crear en nuestro archivo usuarios.js,
 * la función require está importando este archivo */
 router.use('/usuarios', require('./usuarios'));
-
+router.use('/pasteles', require('./pasteles'));
 
 // exportamos nuestro nuevo router
 module.exports = router;
