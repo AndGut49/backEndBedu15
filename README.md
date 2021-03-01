@@ -60,7 +60,7 @@ Usuario administrador
 - Usuario administrador: Un administrador puede crear, modificar y eliminar información de productos, tamaños y precios que verá el usuario. 
 
 ## ¿Qué funcionalidades tiene cada entidad?📂
-- Cliente: añadirCliente, actualizarDatosCliente, eliminarCliente y pedidosCliente
+- Cliente: agregarCliente, actualizarDatosCliente, eliminarCliente y consultarCliente
 - Categoría: agregarCategoria, actualizarCategoria, modificarCategoria y eliminarCategoria
 - Postre: agregarPostre, modificarPostre, eliminarPostre, obtenerPostre, obtenerPostres y listaPostres
 - Tamaño: agregarTamaño, modificarTamaño, eliminarTamaño, obtenerTamaños 

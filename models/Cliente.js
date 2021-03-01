@@ -1,5 +1,5 @@
 class Cliente {
-    constructor(nombre, apellido, direccion, cp, correo, pago) {
+    constructor(id, nombre, apellido, direccion, cp, correo, pago) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
