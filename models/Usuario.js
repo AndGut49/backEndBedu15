@@ -12,21 +12,6 @@ class Usuario{ //Usuari
         this.password = password; //contraseña para logearse
         this.telefono = telefono; //telefono
 	}
-	agregarUsuario(){
-		// función para guardar un nuevo registro en la base de datos.
-	}
-    modificarUsuario(){
-
-    }
-    consultarUsuarios(){
-
-    }
-    eliminarUsuario(){
-
-    }
-    login(){
-        
-    }
 }
 
 module.exports = Usuario;
