@@ -7,3 +7,5 @@ class Postre {
         this.calificacion = calificacion;
     }
 }
+
+module.exports = Postre;

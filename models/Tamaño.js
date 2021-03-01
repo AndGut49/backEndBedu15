@@ -18,3 +18,6 @@ class Tamaño {
     }
 
 }
+
+
+module.exports = Tamaño;

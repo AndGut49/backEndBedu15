@@ -28,3 +28,5 @@ class Usuario{ //Usuari
         
     }
 }
+
+module.exports = Usuario;

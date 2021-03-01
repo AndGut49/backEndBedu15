@@ -9,3 +9,5 @@ class Cliente {
         this.pago = pago;
     }
 }
+
+module.exports = Cliente;

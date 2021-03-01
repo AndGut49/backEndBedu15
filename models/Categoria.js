@@ -20,3 +20,4 @@ class Categoria {
         //Función para consultar las categorias que se tienen
     }
 }
+module.exports = Categoria;
