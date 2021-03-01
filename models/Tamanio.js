@@ -1,23 +1,20 @@
-class Tamaño {
+class Tamanio {
     constructor (id, nombre) {
         this.id = id;
         this.nombre = nombre;
     }
-    crearTamaño () {
+    crearTamanio () {
         // Función para crear un nuevo tamaño
     }
-    actualizarTamaño () {
+    actualizarTamanio () {
         // Función para actualizar la información de el tamaño
     }
-    eliminarTamaño () {
+    eliminarTamanio () {
         //Función para eliminar un tamaño
     } 
 
-    consultarTamaño () {
+    consultarTamanio () {
         //Función para consultar los tamaños disponibles
     }
 
 }
-
-
-module.exports = Tamaño;
