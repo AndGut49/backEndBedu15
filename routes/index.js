@@ -13,6 +13,7 @@ router.get('/', (req, res)=>{
 router.use('/usuarios', require('./usuarios'));
 router.use('/clientes', require('./clientes'));
 router.use('/tamanios', require('./tamanios'));
+router.use('/categorias', require('./categorias'));
 router.use('/pasteles', require('./pasteles'));
 router.use('/compras', require('./compras'));
 
