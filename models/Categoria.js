@@ -2,7 +2,7 @@ class Categoria {
     constructor (id, nombre, descripcion) {
         this.id = id;
         this.nombre = nombre;
-        this.telefono = telefono;
+        this.telefono = telefono; //Revisar por qué hay un atributo teléfono en este modelo
         this.descripcion = descripcion;
     }
 

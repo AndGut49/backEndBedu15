@@ -6,7 +6,7 @@ class Cliente {
         this.direccion = direccion;
         this.cp = cp;
         this.correo = correo;
-        this.pago = pago;
+        this.pago = pago; //Considerar que este atributo vaya en la clase compra.
     }
 }
 
