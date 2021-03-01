@@ -9,8 +9,7 @@ Proyecto de Backend Fundamentals Equipo 15
 
 # Tematica del proyecto 📋
 Tienda de Postres en una ciudad
-Queremos que los clientes consulten la información de diversos postres como precio o disponibilidad
-que ofrece una tienda en cierta ciudad.
+Queremos que los clientes consulten la información de diversos postres como precio o disponibilidad que ofrece una tienda en cierta ciudad.
 
 # Historias de usuario 🧑👧
 1. Como usuario de tiendaPostres, quiero ver todos los postres que manejan para poder conocer su precio.
@@ -49,7 +48,7 @@ Cliente
 Categoría de postre
 Postre
 Tamaño
-<!-- Solicitud -->
+Solicitud de Compra
 Usuario administrador
 
 ## ¿Qué características tiene cada entidad? 📊
@@ -57,7 +56,7 @@ Usuario administrador
 - Categoría de postre: Se refiere al tipo de postre (Pasteles, Gelatinas, Pays, Postres, Panqués, Productos de temporada). (id, nombreCategoria)
 - Postre: Se refiere a todos los postres. (id, nombrePostre, precio, stock, calificacion)
 - Tamaño: Se refiere a los tamaños en que se manejan los postres: único, individual, mini, chico y grande (id, nombreTamaño). 
-<!-- - Solicitud: Una solicitud puede ser creada por un Cliente para consultar la información sobre los postres, tamaños, precios y existencia de productos que haya subido un administrador. -->
+- Solicitud de Compra: Una solicitud puede ser creada por un Cliente para adquirir alguno de los productos que haya subido un administrador.
 - Usuario administrador: Un administrador puede crear, modificar y eliminar información de productos, tamaños y precios que verá el usuario. 
 
 ## ¿Qué funcionalidades tiene cada entidad?📂
@@ -66,6 +65,6 @@ Usuario administrador
 - Postre: agregarPostre, modificarPostre, eliminarPostre, obtenerPostre, obtenerPostres y listaPostres
 - Tamaño: agregarTamaño, modificarTamaño, eliminarTamaño, obtenerTamaños 
 - Usuario administrador: agregarUsuario, modificarUsuario, consultarUsuarios, eliminarUsuario y login
-<!-- - Solicitud: crearSolicitud, modificarSolicitud, consultarSolicitudes y eliminarSolicitud -->
+- Compra: crearCompra, modificarCompra, obtenerCompras y eliminarCompra
  
 

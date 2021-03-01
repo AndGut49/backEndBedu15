@@ -1,5 +1,5 @@
 /*  Archivo controllers/compras.js
- *  Simulando la respuesta de objetos Usuario
+ *  Simulando la respuesta de objetos Compras
  *  en un futuro aquí se utilizarán los modelos
  */
 
