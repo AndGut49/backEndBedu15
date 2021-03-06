@@ -40,4 +40,5 @@ INSERT INTO sabor VALUES (39, "Chocolate y fresa");
 INSERT INTO sabor VALUES (40, "Piñón");
 INSERT INTO sabor VALUES (41, "Queso y Piña");
 INSERT INTO sabor VALUES (42, "Macadamia");
+INSERT INTO sabor VALUES (43, "Dulce de leche");
 SELECT * from sabor;
