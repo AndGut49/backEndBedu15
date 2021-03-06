@@ -1,12 +1,13 @@
 class Cliente {
-    constructor(id, nombre, apellido, direccion, cp, correo, pago) {
-        this.id = id;
+    constructor(idCliente, nombre, apellidoPaterno, apellidoMaterno, direccion, cp, correo, password) {
+        this.idCliente = idCliente;
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
         this.direccion = direccion;
         this.cp = cp;
         this.correo = correo;
-        this.pago = pago; //Considerar que este atributo vaya en la clase compra.
+        this.password = password;
     }
 }
 

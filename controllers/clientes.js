@@ -15,13 +15,14 @@ function agregarCliente(req, res) {
 
 function consultarCliente(req, res) {
   // Simulando cliente
-  var cliente1 = new Cliente(1, 'Alexander', 'Santos','Iguala de la independencia','40020','rast.santos@gmail.com','')
+  // idCliente, nombre, apellidoPaterno, apellidoMaterno, direccion, cp, correo, password
+  var cliente1 = new Cliente(1, 'Alexander', 'Santos','Iguala de la independencia','40020','rast.santos@gmail.com','123456789')
   res.send([cliente1])
 }
 
 function modificarCliente(req, res) {
   // simulando un cleinte previamente existente que se modifica
-  var cliente1 = new Cliente(req.params.id,'Alexander', 'Santos','Iztapalapa','09310','rast.santos@gmail.com','')
+  var cliente1 = new Cliente(req.params.id,'Alexander', 'Santos','Iztapalapa','09310','rast.santos@gmail.com','123456789')
   var modificaciones = req.body
   cliente1 = { ...cliente1, ...modificaciones }
   res.send(cliente1)

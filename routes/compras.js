@@ -1,14 +1,14 @@
 // Estructura del CRUD
 const router = require('express').Router();
 const {
-    crearCompra,
-    obtenerCompras,
+    agregarCompra,
+    consultarCompras,
     modificarCompra,
     eliminarCompra
 } = require('../controllers/compras')
 
-router.get('/', obtenerCompras)
-router.post('/', crearCompra)
+router.get('/', agregarCompra)
+router.post('/', consultarCompras)
 router.put('/:id', modificarCompra)
 router.delete('/:id', eliminarCompra)
 
