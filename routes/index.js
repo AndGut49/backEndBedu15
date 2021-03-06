@@ -16,6 +16,7 @@ router.use('/tamanios', require('./tamanios'));
 router.use('/categorias', require('./categorias'));
 router.use('/postres', require('./postres'));
 router.use('/compras', require('./compras'));
+router.use('/sabores', require('./sabores'));
 
 // exportamos nuestro nuevo router
 module.exports = router;
