@@ -7,7 +7,7 @@
 const Postre = require('../models/Postre')
 
 function crearPostre(req, res) {
-    // Instanciaremos un nuevo usuario utilizando la clase Postre
+    // Instanciaremos un nuevo postre utilizando la clase Postre
     var postre = new Postre(req.body)
     res.status(201).send(postre)
 }
