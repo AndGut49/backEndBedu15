@@ -2,13 +2,13 @@
 const router = require('express').Router();
 const {
     crearCategoria,
-    obtenerCategorias,
+    consultarCategorias,
     modificarCategoria, 
     eliminarCategoria
 } = require('../controllers/categorias')
 
 router.get('/', crearCategoria)
-router.post('/', obtenerCategorias)
+router.post('/', consultarCategorias)
 router.put('/:id', modificarCategoria)
 router.delete('/:id', eliminarCategoria)
 

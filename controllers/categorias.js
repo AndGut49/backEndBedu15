@@ -6,16 +6,16 @@ function crearCategoria(req, res) {
     res.status(201).send(categoria)
 }
 
-function obtenerCategorias(req, res) {
+function consultarCategorias(req, res) {
     // Simulando dos categorias y respondiendolas
-    var categoria1 = new Categoria(1, 'Postres Frios', 'Se incluyen merengues, puddings, carlotas, entre otros')
-    var categoria2 = new Categoria(2, 'Postres Calientes', ' ')
+    var categoria1 = new Categoria(1, 'Postres Frios')
+    var categoria2 = new Categoria(2, 'Postres Calientes')
     res.send([categoria1, categoria2])
 }
 
 function modificarCategoria(req, res) {
     // simulando una categoria previamente existente que el cliente modifica
-    var categoria1 = new Categoria(req.params.id, 'Postres Frios', 'Se incluyen merengues, puddings, carlotas, entre otros')
+    var categoria1 = new Categoria(req.params.id, 'Postres Frios')
     var modificaciones = req.body
     categoria1 = { ...categoria1, ...modificaciones }
     res.send(categoria1)
@@ -29,7 +29,7 @@ function eliminarCategoria(req, res) {
 // exportamos las funciones definidas
 module.exports = {
     crearCategoria,
-    obtenerCategorias,
+    consultarCategorias,
     modificarCategoria,
     eliminarCategoria
 }
