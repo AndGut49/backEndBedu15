@@ -1,7 +1,7 @@
 class Categoria {
-    constructor (id, nombre) {
-        this.id = id;
-        this.nombre = nombre;
+    constructor (idCategoria, nombreCategoria) {
+        this.idCategoria = idCategoria;
+        this.nombreCategoria = nombreCategoria;
     }
 }
 module.exports = Categoria;
