@@ -6,7 +6,13 @@ function crearTamanio (req,res) {
     var tamanio = new Tamanio(req.body)
     res.status(201).send(tamanio)
 }
-function actualizarTamanio (req,res) {
+function consultarTamanio (req,res) {
+    //Función para consultar los tamaños disponibles
+    var tamanio1 = new Tamanio(1, 'Chico')
+    var tamanio2 = new Tamanio(2, 'Mediano')
+    res.send([tamanio1,tamanio2])
+}
+function modificarTamanio (req,res) {
     // Función para actualizar la información de el tamaño
     var tamanio1 = new Tamanio(req.params.id, 'Chico')
     var modificaciones = req.body
@@ -18,17 +24,10 @@ function eliminarTamanio (req,res) {
     res.status(200).send(`Tamaño con el id ${req.params.id} eliminado`);
 } 
 
-function consultarTamanio (req,res) {
-    //Función para consultar los tamaños disponibles
-    var tamanio1 = new Tamanio(1, 'Chico')
-    var tamanio2 = new Tamanio(2, 'Mediano')
-    res.send([tamanio1,tamanio2])
-}
-
 // exportamos las funciones definidas
 module.exports = {
     crearTamanio,
-    actualizarTamanio,
-    eliminarTamanio,
-    consultarTamanio
+    consultarTamanio,
+    modificarTamanio,
+    eliminarTamanio    
 }

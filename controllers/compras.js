@@ -6,7 +6,7 @@
 // importamos el modelo de Compra 
 const Compra = require('../models/Compra')
 
-function agregarCompra(req, res) {
+function crearCompra(req, res) {
   // Instanciaremos una nueva compra utilizando la clase Compra
   var compra = new Compra(req.body)
   res.status(201).send(compra)
@@ -35,7 +35,7 @@ function eliminarCompra(req, res) {
 
 // exportamos las funciones definidas
 module.exports = {
-  agregarCompra,
+  crearCompra,
   consultarCompras,
   modificarCompra,
   eliminarCompra

@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const {
     crearTamanio,
-    actualizarTamanio,
+    modificarTamanio,
     eliminarTamanio,
     consultarTamanio
 } = require('../controllers/tamanios')
@@ -10,7 +10,7 @@ const {
 router.get('/', crearTamanio)
 router.post('/', consultarTamanio)
 router.put('/:id', eliminarTamanio)
-router.delete('/:id', actualizarTamanio)
+router.delete('/:id', modificarTamanio)
 
 module.exports = router;
 

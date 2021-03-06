@@ -1,13 +1,13 @@
   // Estructura del CRUD
 const router = require('express').Router();
 const {
-    agregarCliente,
+    crearCliente,
     consultarCliente,
     modificarCliente,
     eliminarCliente,
 } = require('../controllers/clientes')
 
-router.get('/', agregarCliente)
+router.get('/', crearCliente)
 router.post('/', consultarCliente)
 router.put('/:id', modificarCliente)
 router.delete('/:id', eliminarCliente)

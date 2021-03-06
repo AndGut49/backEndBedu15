@@ -1,6 +1,6 @@
 class Tamanio {
-    constructor (id, nombre) {
-        this.id = id;
-        this.nombre = nombre;
+    constructor (idTamanio, nombreTamanio) {
+        this.idTamanio = idTamanio;
+        this.nombreTamanio = nombreTamanio;
     }
 }

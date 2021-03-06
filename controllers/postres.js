@@ -6,7 +6,7 @@
 // importamos el modelo de Postre
 const Postre = require('../models/Postre')
 
-function agregarPostre(req, res) {
+function crearPostre(req, res) {
     // Instanciaremos un nuevo usuario utilizando la clase Postre
     var postre = new Postre(req.body)
     res.status(201).send(postre)
@@ -35,7 +35,7 @@ function eliminarPostre(req, res) {
 
 // exportamos las funciones definidas
 module.exports = {
-    agregarPostre,
+    crearPostre,
     consultarPostres,
     modificarPostre,
     eliminarPostre

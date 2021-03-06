@@ -7,7 +7,7 @@
 // importamos el modelo de clientes
 const Cliente = require('../models/Cliente')
 
-function agregarCliente(req, res) {
+function crearCliente(req, res) {
   // Instanciaremos un nuevo cliente utilizando la clase cliente
   var cliente = new Cliente(req.body)
   res.status(201).send(cliente)
@@ -36,7 +36,7 @@ function eliminarCliente(req, res) {
 
 // exportamos las funciones definidas
 module.exports = {
-  agregarCliente,
+  crearCliente,
   consultarCliente,
   modificarCliente,
   eliminarCliente,
