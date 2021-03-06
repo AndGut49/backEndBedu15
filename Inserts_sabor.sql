@@ -1,0 +1,11 @@
+INSERT INTO sabor VALUES (1, "Chocolate");
+INSERT INTO sabor VALUES (2, "Vainilla");
+INSERT INTO sabor VALUES (3, "Limon");
+INSERT INTO sabor VALUES (4, "Chocomenta");
+INSERT INTO sabor VALUES (5, "Red Velvet");
+INSERT INTO sabor VALUES (6, "Frutos rojos");
+INSERT INTO sabor VALUES (7, "Frambuesas");
+INSERT INTO sabor VALUES (8, "Fresas");
+INSERT INTO sabor VALUES (9, "Queso");
+INSERT INTO sabor VALUES (10, "Z");
+SELECT * from sabor;
