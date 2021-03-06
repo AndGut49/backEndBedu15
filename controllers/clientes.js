@@ -19,7 +19,7 @@ function consultarCliente(req, res) {
   res.send([cliente1])
 }
 
-function actualizarDatosCliente(req, res) {
+function modificarCliente(req, res) {
   // simulando un cleinte previamente existente que se modifica
   var cliente1 = new Cliente(req.params.id,'Alexander', 'Santos','Iztapalapa','09310','rast.santos@gmail.com','')
   var modificaciones = req.body
@@ -37,6 +37,6 @@ function eliminarCliente(req, res) {
 module.exports = {
   agregarCliente,
   consultarCliente,
-  actualizarDatosCliente,
+  modificarCliente,
   eliminarCliente,
 }
