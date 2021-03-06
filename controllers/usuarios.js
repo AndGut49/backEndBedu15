@@ -6,7 +6,7 @@
 // importamos el modelo de usuarios
 const Usuario = require('../models/Usuario')
 
-function agregarUsuario(req, res) {
+function crearUsuario(req, res) {
   // Instanciaremos un nuevo usuario utilizando la clase usuario
   var usuario = new Usuario(req.body)
   res.status(201).send(usuario)
@@ -37,7 +37,7 @@ function login (req,res){
 
 // exportamos las funciones definidas
 module.exports = {
-  agregarUsuario,
+  crearUsuario,
   consultarUsuarios,
   modificarUsuario,
   eliminarUsuario,

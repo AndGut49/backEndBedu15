@@ -1,6 +1,6 @@
-class Usuario{ //Usuari
-	constructor(userId, nombre, apellidoPaterno, apellidoMaterno, foto, edad, sexo, direccion, email, password, telefono){
-        tbis.userId = userId; //id unico de usuario
+class Usuario{ //Usuario
+	constructor(idUsuario, nombre, apellidoPaterno, apellidoMaterno, foto, edad, sexo, direccion, email, password, telefono){
+        this.idUsuario = idUsuario; //id unico de usuario
 		this.nombre = nombre; // nombre del usuario
         this.apellidoPaterno = apellidoPaterno; //apellido paterno del usuario
         this.apellidoMaterno = apellidoMaterno; //apellido materno del usuario
