@@ -1,4 +1,5 @@
 --ESTRUCTURA PARA EL INSERT (idCliente, nombre, apellidoPaterno, apellidoMaterno, direccion, cp, email, password)
+use tiendapostres;
 INSERT INTO cliente VALUES(1,"Juan","Garcia","Medina","delegacion iztacalco","03900","juanga@hotmail.com","758s6");
 INSERT INTO cliente VALUES(2,"Andrea","Lopez","Nieves","delegacion iztapalapa","03902","andreln@gmail.com","asde2356");
 INSERT INTO cliente VALUES(3,"Julian","Sanchez","Marquez","delegacion iztacalco","03901","julians@gmail.com","orri4355");

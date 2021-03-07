@@ -1,3 +1,3 @@
 --- ESTRUCTURA PARA USUARIO (idUsuario, nombre, apellidoPaterno, apellidoMaterno, foto, edad, sexo, direccion, email, password, telefono)
-
+use tiendapostres;
 INSERT INTO usuario VALUES (1,"Rafael","Santos","Trujillo","https://media-exp1.licdn.com/dms/image/C5603AQHv11cejkow8g/profile-displayphoto-shrink_800_800/0/1604330230477?e=1620864000&v=beta&t=cPN8KO588feRjHevJTB6sIohIzCblfXq3SW--YVB1ys",26,'M',"Iguala de la independencia","rast.santos@gmail.com","pass1234","7331487116");

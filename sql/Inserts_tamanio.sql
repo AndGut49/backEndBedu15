@@ -1,3 +1,4 @@
+use tiendapostres;
 INSERT INTO tamanio VALUES (1, "Individual");
 INSERT INTO tamanio VALUES (2, "Chico");
 INSERT INTO tamanio VALUES (3, "Mediano");

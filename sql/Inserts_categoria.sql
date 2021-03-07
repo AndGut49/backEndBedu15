@@ -1,3 +1,4 @@
+use tiendapostres;
 INSERT INTO categoria VALUES(1,"Pasteles");
 INSERT INTO categoria VALUES(2,"Gelatinas");
 INSERT INTO categoria VALUES(3,"Galletas");

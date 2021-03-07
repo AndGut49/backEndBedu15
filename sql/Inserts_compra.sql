@@ -1,4 +1,5 @@
 --- Estructura para compras (idCompra, idCliente, idPostre, cantidad, formaPago, fechaCompra)
+use tiendapostres;
 INSERT INTO compra VALUES (1, 4, 2, 3, 1, '2020-07-04');
 INSERT INTO compra VALUES (2, 5, 2, 1, 1, '2020-04-04');
 INSERT INTO compra VALUES (3, 5, 1, 2, 1, '2020-04-04');

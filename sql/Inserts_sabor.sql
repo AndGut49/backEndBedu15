@@ -1,3 +1,4 @@
+use tiendapostres;
 INSERT INTO sabor VALUES (1, "Chocolate");
 INSERT INTO sabor VALUES (2, "Vainilla");
 INSERT INTO sabor VALUES (3, "Limon");
