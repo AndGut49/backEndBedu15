@@ -47,7 +47,7 @@ const Postre = sequelize.define('Postre', {
         allowNull: false
     },
     stock: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         // indicamos que el campo no admite valores null
         allowNull: false
     }
@@ -56,7 +56,7 @@ const Postre = sequelize.define('Postre', {
 }, { tableName: 'postre' });
 
 //Relacion una Categoria puede tener diferentes popstres
-Categoria.hasMany(Poster, {as:'Categorias', foreignKey: 'idCategoria'})
+Categoria.hasMany(Postre, {as:'Categorias', foreignKey: 'idCategoria'})
 
 //Relacion un un sabor puede estar en diferentes postres, un postre puede tener un solo sabor
 Sabor.hasMany(Postre, {as: 'Sabores', foreignKey: 'idSabor'})

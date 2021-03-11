@@ -6,33 +6,56 @@
 // importamos el modelo de usuarios
 const Usuario = require('../models/Usuario')
 
-function crearUsuario(req, res) {
-  // Instanciaremos un nuevo usuario utilizando la clase usuario
-  var usuario = new Usuario(req.body)
-  res.status(201).send(usuario)
+function crearUsuario(req, res,next) {
+  const usr = Usuario.build(req.body)
+
+  usr.save().then(user => {
+    console.log("cree un nuevo administrador");
+    return res.status(201).json(user.toAuthJSON())
+  }).catch(next);
 }
 
 function consultarUsuarios(req, res) {
-  // Simulando dos usuarios y respondiendolos
-  var usuario1 = new Usuario(1, 'Rafael Alejandro', 'Santos','Trujillo','url foto',26,'M','Iguala de la independencia','rast.santos@gmail.com','pass123', '7331487116')
-  res.send([usuario1])
+  Usuario.findAll().then(user => {
+    console.log("Entre consultar administrador");
+    return res.json(user)
+  }).catch(error => {
+    return res.sendStatus(401)
+  })
 }
 
 function modificarUsuario(req, res) {
-  // simulando un usuario previamente existente que el cliente modifica
-  var usuario1 = new Usuario(req.params.id, 'Rafael Alejandro', 'Santos','Trujillo','url foto',26,'M','Iztapalapa CDMX','rast.santos@gmail.com','pass123', '7331487116')
-  var modificaciones = req.body
-  usuario1 = { ...usuario1, ...modificaciones }
-  res.send(usuario1)
+  const usr = Usuario.create({
+    id: req.params.id,
+    ...req.body
+  })
+  usr.save().then(user => {
+    console.log("Modifique usuario");
+    return res.status(201).json(user.toAuthJSON())
+  }).catch(next);
 }
 
 function eliminarUsuario(req, res) {
-  // se simula una eliminación de usuario, regresando un 200
-  res.status(200).send(`Usuario ${req.params.id} eliminado`);
+  const usr = Usuario.findByPk(req.usuario.id);
+  if (usr === null) {
+    return res.sendStatus(401)
+  } else {
+    usr.destroy().then(user => {
+      console.log("Elimine usuario");
+      return res.status(200)
+    }).catch(err => {
+      return res.sendStatus(500)
+    })
+  }
 }
 
 function login (req,res){
-    res.status(200).send(`Usuario con el id: ${req.params.id} inicio sesión`);
+  const usr = Usuario.findByPk(req.usuario.id);
+  if (usr === null) {
+    return res.sendStatus(401)
+  } else {
+    return res.status(200).send(`Usuario con el id: ${req.usuario.id} inicio sesión`);
+  }
 }
 
 // exportamos las funciones definidas

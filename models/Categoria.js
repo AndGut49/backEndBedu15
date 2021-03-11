@@ -23,6 +23,7 @@ const Categoria = sequelize.define('Categoria', {
     }
     // le decimos a que tabla de nuestra base de datos corresponde.
 }, { tableName: 'categoria' });
+console.log(Categoria === sequelize.models.Categoria);
 
 // exportamos el modelo.
 module.exports = Categoria;

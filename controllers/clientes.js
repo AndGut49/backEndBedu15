@@ -7,30 +7,47 @@
 // importamos el modelo de clientes
 const Cliente = require('../models/Cliente')
 
-function crearCliente(req, res) {
-  // Instanciaremos un nuevo cliente utilizando la clase cliente
-  var cliente = new Cliente(req.body)
-  res.status(201).send(cliente)
+function crearCliente(req, res,next) {
+  const clnt= Cliente.build(req.body)
+
+  clnt.save().then(cliente => {
+    console.log("cree un nuevo cliente");
+    return res.status(201).json(cliente.toAuthJSON())
+  }).catch(next);
 }
 
 function consultarCliente(req, res) {
-  // Simulando cliente
-  // idCliente, nombre, apellidoPaterno, apellidoMaterno, direccion, cp, correo, password
-  var cliente1 = new Cliente(1, 'Alexander', 'Santos','Iguala de la independencia','40020','rast.santos@gmail.com','123456789')
-  res.send([cliente1])
+  Cliente.findAll().then(cliente => {
+    console.log("Entre consultar cliente");
+    return res.json(cliente)
+  }).catch(error => {
+    return res.sendStatus(401)
+  })
 }
 
-function modificarCliente(req, res) {
-  // simulando un cleinte previamente existente que se modifica
-  var cliente1 = new Cliente(req.params.id,'Alexander', 'Santos','Iztapalapa','09310','rast.santos@gmail.com','123456789')
-  var modificaciones = req.body
-  cliente1 = { ...cliente1, ...modificaciones }
-  res.send(cliente1)
+function modificarCliente(req, res,next) {
+  const clnt = Cliente.create({
+    id: req.params.id,
+    ...req.body
+  })
+  clnt.save().then(cliente => {
+    console.log("Modifiquecliente");
+    return res.status(201).json(cliente.toAuthJSON())
+  }).catch(next);
 }
 
 function eliminarCliente(req, res) {
-  // se simula una eliminación de cliente, regresando un 200
-  res.status(200).send(`Cliente con el id: ${req.params.id} eliminado`);
+  const clnt = Cliente.findByPk(req.cliente.id);
+  if ( clnt === null) {
+    return res.sendStatus(401)
+  }else{
+    clnt.destroy().then(cliente =>{
+      console.log("Elimine cliente");
+      return res.status(200)
+    }).catch(err => {
+      return res.sendStatus(500)
+    })
+  }
 }
 
 

@@ -36,7 +36,7 @@ const Compra = sequelize.define('Compra', {
         allowNull: false
     },
     formaPago: {
-        type: DataTypes.INT
+        type: DataTypes.INTEGER
     },
     fechaPago: {
         type: DataTypes.DATE

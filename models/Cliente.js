@@ -53,4 +53,6 @@ const Cliente = sequelize.define('Cliente', {
     // le decimos a que tabla de nuestra base de datos corresponde.
 }, { tableName: 'cliente' });
 
+console.log(Cliente === sequelize.models.Cliente);
+
 module.exports = Cliente;

@@ -2,26 +2,43 @@
 const Tamanio = require('../models/Tamanio')
 
 function crearTamanio (req,res) {
-    // Función para crear un nuevo tamaño
-    var tamanio = new Tamanio(req.body)
-    res.status(201).send(tamanio)
+    const tmn = Tamanio.build(req.body)
+
+    tmn.save().then(tamnio => {
+        console.log("cree un nuevo tamanio");
+        return res.status(201).json(tamanio.toAuthJSON())
+    }).catch(next);
 }
 function consultarTamanio (req,res) {
-    //Función para consultar los tamaños disponibles
-    var tamanio1 = new Tamanio(1, 'Chico')
-    var tamanio2 = new Tamanio(2, 'Mediano')
-    res.send([tamanio1,tamanio2])
+    Tamanio.findAll().then(tamanio => {
+        console.log("Entre consultar tamanio");
+        return res.json(tamanio)
+    }).catch(error => {
+        return res.sendStatus(401)
+    })
 }
 function modificarTamanio (req,res) {
-    // Función para actualizar la información de el tamaño
-    var tamanio1 = new Tamanio(req.params.id, 'Chico')
-    var modificaciones = req.body
-    tamanio1 = { ...tamanio1, ...modificaciones }
-    res.send(tamanio1)
+    const tmn = Tamanio.create({
+        id: req.params.id,
+        ...req.body
+    })
+    tmn.save().then(tamanio => {
+        console.log("Modifique tamanio");
+        return res.status(201).json(tamanio.toAuthJSON())
+    }).catch(next);
 }
 function eliminarTamanio (req,res) {
-    //Función para eliminar un tamaño
-    res.status(200).send(`Tamaño con el id ${req.params.id} eliminado`);
+    const tmn = Tamanio.findByPk(req.tamanio.id);
+    if (tmn === null) {
+        return res.sendStatus(401)
+    } else {
+        tmn.destroy().then(tamanio => {
+            console.log("Elimine tamanio");
+            return res.status(200)
+        }).catch(err => {
+            return res.sendStatus(500)
+        })
+    }
 } 
 
 // exportamos las funciones definidas

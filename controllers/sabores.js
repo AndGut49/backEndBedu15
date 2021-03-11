@@ -1,36 +1,48 @@
-/*  Archivo controllers/sabor.js
- *  Simulando la respuesta de objetos Sabor
- *  en un futuro aquí se utilizarán los modelos
- */
 
 // importamos el modelo de Sabor
 const Sabor = require('../models/Sabor')
 
-function crearSabor(req, res) {
-    // Instanciaremos un nuevo sabor utilizando la clase Postre
-    var sabor = new Sabor(req.body)
-    res.status(201).send(sabor)
+function crearSabor(req, res,next) {
+    const sbr = Sabor.build(req.body)
+
+    sbr.save().then(sabor =>{
+        console.log("cree un nuevo sabor");
+        return res.status(201).json(sabor.toAuthJSON())
+    }).catch(next);
 }
 
 function consultarSabor(req, res) {
-    // Simulando dos sabores y respondiendolos
-    //idSabor,nombreSabor
-    var sabor1 = new Sabor(1, 'Queso con Zarzamora')
-    var sabor2 = newSabor(2, 'Zanahoria')
-    res.send([sabor1, sabor2])
+    Sabor.findAll().then(sabor => {
+        console.log("Entre consultar sabor");
+        return res.json(sabor)
+    }).catch(error => {
+        return res.sendStatus(401)
+    })
 }
 
-function modificarSabor(req, res) {
-    // simulando un sabor previamente existente que se modifica
-    var sabor1 = new Sabor(req.params.id, 1, 'Queso con Fresa')
-    var modificaciones = req.body
-    sabor1 = { ...sabor1, ...modificaciones }
-    res.send(sabor1)
+function modificarSabor(req, res,next) {
+    const sbr = Sabor.create({
+        id: req.params.id,
+        ...req.body
+    })
+    sbr.save().then(sabor => {
+        console.log("Modifique sabor");
+        return res.status(201).json(sabor.toAuthJSON())
+    }).catch(next);
 }
 
 function eliminarSabor(req, res) {
-    // se simula una eliminación de sabor, regresando un 200
-    res.status(200).send(`Sabor ${req.params.id} eliminado`);
+    const sbr = Sabor.findByPk(req.sabor.id);
+    if(sbr === null){
+        return res.sendStatus(401)
+    }else{
+        sbr.destroy().then(sbr => {
+            console.log("Elimine sabor");
+            return res.status(200)
+        }).catch(err => {
+            return res.sendStatus(500)
+        })
+    }
 }
 
 // exportamos las funciones definidas

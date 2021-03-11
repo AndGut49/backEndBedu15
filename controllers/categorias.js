@@ -1,30 +1,52 @@
 const Categoria = require('../models/Categoria')
 
-function crearCategoria(req, res) {
-    // Instanciaremos una nueva categoria utilizando la clase Categoria
-    var categoria = new Categoria(req.body)
-    res.status(201).send(categoria)
+function crearCategoria(req, res,next) {
+    const ctg = Categoria.build(req.body)
+
+    ctg.save().then(categoria => {
+        console.log("cree un nueva categoria");
+        return res.status(201).json(categoria.toAuthJSON())
+    }).catch(next);
 }
+
 
 function consultarCategorias(req, res) {
-    // Simulando dos categorias y respondiendolas
-    var categoria1 = new Categoria(1, 'Postres Frios')
-    var categoria2 = new Categoria(2, 'Postres Calientes')
-    res.send([categoria1, categoria2])
+    Categoria.findAll().then(categoria => {
+        console.log("Entre a consultar categorias");
+        return res.json(categoria)
+    }).catch(error => {
+        return res.sendStatus(401)
+    })
 }
 
-function modificarCategoria(req, res) {
-    // simulando una categoria previamente existente que el cliente modifica
-    var categoria1 = new Categoria(req.params.id, 'Postres Frios')
-    var modificaciones = req.body
-    categoria1 = { ...categoria1, ...modificaciones }
-    res.send(categoria1)
+
+function modificarCategoria(req, res, next) {
+    const ctg = Categoria.create({
+        id: req.params.id,
+        ...req.body
+    })
+    ctg.save().then(categoria => {
+        console.log("Modifique categoria");
+        return res.status(201).json(categoria.toAuthJSON())
+    }).catch(next);
 }
+
+
 
 function eliminarCategoria(req, res) {
-    // se simula una eliminación de una categoria, regresando un 200
-    res.status(200).send(`Categoria ${req.params.id} eliminado`);
+    const ctg = Categoria.findByPk(req.categoria.id);
+    if( ctg === null){
+        return res.sendStatus(401)
+    }else{
+        ctg.destroy().then(categoria => {
+            console.log("Elimine categoria");
+            return res.status(200)
+        }).catch(err => {
+            return res.sendStatus(500)
+        })
+    }
 }
+
 
 // exportamos las funciones definidas
 module.exports = {
