@@ -1,13 +1,13 @@
-/*GENERACION DEL MODELO DE Cliente USANDO SEQUELIZE*/
+/*GENERACION DEL MODELO DE Administrador USANDO SEQUELIZE*/
 
 // importamos por separado los métodos de Sequelize y los tipos de dato.
 const { Sequelize, DataTypes } = require('sequelize');
 // importamos sequelize con la opción de memory para forzar al gestor a almacenarla en la memoria.
 const sequelize = new Sequelize('mysql::memory:');
 
-//creamos el modelo para cliente
-const Cliente = sequelize.define('Cliente', {
-    idCliente: {
+//creamos el modelo para administrador
+const Administrador = sequelize.define('Administrador', {
+    idUsuario: {
         // se indica el tipo de dato de la columna.
         type: DataTypes.INTEGER,
         // indicamos que este campo es llave primaria
@@ -21,36 +21,42 @@ const Cliente = sequelize.define('Cliente', {
         // indicamos que el campo no admite valores null
         allowNull: false
     },
-    apellidoPaterno: {
-        type: DataTypes.STRING(20),
+    apellidoPaterno: { 
+        type: DataTypes.String(20),
         // indicamos que el campo no admite valores null
         allowNull: false
     },
     apellidoMaterno: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.String(20),
         // indicamos que el campo no admite valores null
         allowNull: false
     },
-    direccion: {
-        type: DataTypes.STRING(200),
-        // indicamos que el campo no admite valores null
-        allowNull: false
+    foto: {
+        type: DataTypes.String(200)
+    },
+    edad: {
+        type: DataTypes.INTEGER
+    },
+    sexo:{
+        type: DataTypes.CHAR
     },
     direccion: {
-        type: DataTypes.STRING(5)
+        type: DataTypes.CHAR
     },
     email: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.String(100),
         // indicamos que el campo no admite valores null
         allowNull: false
     },
     password: {
-        type: DataTypes.STRING(11),
+        type: DataTypes.String(11),
         // indicamos que el campo no admite valores null
         allowNull: false
+    },
+    password: {
+        type: DataTypes.String(10)
     }
-
     // le decimos a que tabla de nuestra base de datos corresponde.
-}, { tableName: 'cliente' });
+}, { tableName: 'usuario' });
 
-module.exports = Cliente;
+module.exports = Administrador;
