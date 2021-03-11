@@ -95,7 +95,14 @@ function obtenerUsuarios(req, res) {
 
 // Función para búsquedas más específicas
 
-
+function obtenerUsuarios(req, res) {
+  Model.findAll({
+  attributes: [idUsuario, nombre, apellidoPaterno],
+  where: {
+    email:'pam.nav88@gmail.com' // Verificar de dónde va salir este dato
+  }
+  });
+}
 
 // Función para modificar Usuario
 
