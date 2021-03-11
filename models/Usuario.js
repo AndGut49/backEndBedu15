@@ -1,17 +1,37 @@
-class Usuario{ //Usuario
-	constructor(idUsuario, nombre, apellidoPaterno, apellidoMaterno, foto, edad, sexo, direccion, email, password, telefono){
-        this.idUsuario = idUsuario; //id unico de usuario
-		this.nombre = nombre; // nombre del usuario
-        this.apellidoPaterno = apellidoPaterno; //apellido paterno del usuario
-        this.apellidoMaterno = apellidoMaterno; //apellido materno del usuario
-        this.foto = foto; //foto del usuario
-		this.edad = edad; // edad del usuario
-		this.sexo = sexo; // sexo del usuario
-		this.direccion = direccion; // direccion del usuario
-        this.email = email; //email del usuario
-        this.password = password; //contraseña para logearse
-        this.telefono = telefono; //telefono
-	}
-}
+/*GENERACION DEL MODELO DE USUARIO USANDO SEQUELIZE*/
 
+
+// importamos por separado los métodos de Sequelize y los tipos de dato.
+const { Sequelize, DataTypes } = require('sequelize');
+// importamos sequelize con la opción de memory para forzar al gestor a almacenarla en la memoria.
+const sequelize = new Sequelize('mysql::memory:');
+
+//creamos el modelo para usuario
+const Usuario = sequelize.define('Usuario', {
+  id: {
+    // se indica el tipo de dato de la columna.
+    type: DataTypes.INTEGER,
+    // indicamos que este campo es llave primaria
+    primaryKey : true
+  },
+  username: {
+    type: DataTypes.STRING,
+    // indicamos que el campo no admite valores null
+    allowNull: false
+  },
+  nombre: DataTypes.STRING,
+  apellidoPaterno: DataTypes.STRING,
+  apellidoMaterno: DataTypes.STRING,
+  foto: DataTypes.STRING,
+  edad: DataTypes.INTEGER,
+  sexo: DataTypes.STRING,
+  ubicacion: DataTypes.STRING,
+  email: DataTypes.STRING,
+  password: DataTypes.STRING,
+  telefono: DataTypes.STRING,
+
+  // le decimos a que tabla de nuestra base de datos corresponde.
+},{ tableName: 'usuario'});
+
+// exportamos el modelo.
 module.exports = Usuario;
