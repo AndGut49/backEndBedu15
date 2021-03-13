@@ -8,7 +8,7 @@ const {
 } = require('../controllers/sabores')
 
 router.post('/', crearSabor)
-router.get('/:id', consultarSabor)
+router.get('/consultar', consultarSabor)
 router.put('/:id', modificarSabor)
 router.delete('/:id', eliminarSabor)
 
