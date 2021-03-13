@@ -20,7 +20,6 @@ INSERT INTO cliente VALUES(17,"Karina","Castillo","Mendez","delegacion cuajimalp
 INSERT INTO cliente VALUES(18,"Carmen","Lopez","Lopez","delegacion benito juarez","03990","carmenll@hotmail.com","hgj764");
 INSERT INTO cliente VALUES(19,"Daniel","Hernandez","Sanchez","delegacion benito juarez","03990","danielhdz@gmail.com","fghs3");
 INSERT INTO cliente VALUES(20,"Carlos","Fuentes","Perez","delegacion benito juarez","03990","carlosdp@hotmail.com","3435sf");
-
 INSERT INTO cliente VALUES(21,"Alexander","Rodriguez","Cipres","delegacion iztacalco","03900","alexrc@hotmail.com","alex123");
 INSERT INTO cliente VALUES(22,"Andrea","Guille","Torres","delegacion iztapalapa","03902","andregt@gmail.com","andrea1234");
 INSERT INTO cliente VALUES(23,"Itzayana","Enrique","Ortiz","delegacion iztacalco","03901","itzaor@gmail.com","itz1234");
@@ -41,7 +40,6 @@ INSERT INTO cliente VALUES(37,"Kami","Castillo","Cruz","delegacion cuajimalpa","
 INSERT INTO cliente VALUES(38,"Carmelo","Lopez","Lopez","delegacion benito juarez","03990","carmelo23@hotmail.com","carmelo123");
 INSERT INTO cliente VALUES(39,"Daniela","Hernandez","Perez","delegacion benito juarez","03990","danielaperez1@gmail.com","danyp12");
 INSERT INTO cliente VALUES(40,"Carlos","Velasco","Silva","delegacion benito juarez","03990","carlossillvav@hotmail.com","silvando1");
-
 INSERT INTO cliente VALUES(41,"Marco","Salgado","Perez","delegacion iztacalco","03900","marcosalper@hotmail.com","salper12");
 INSERT INTO cliente VALUES(42,"Daniel","Guarnero","Trejo","delegacion iztacalco","03900","guarneros@gmail.com","mustangt");
 INSERT INTO cliente VALUES(43,"Osmar","Radilla","Flores","delegacion benito juarez","03909","osmarra@gmail.com","osmarsin");
