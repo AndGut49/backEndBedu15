@@ -1,5 +1,7 @@
   // Estructura del CRUD
 const router = require('express').Router();
+const cors = require("cors");
+router.use(cors());
 const {
     crearCliente,
     consultarCliente,
@@ -7,8 +9,8 @@ const {
     eliminarCliente,
 } = require('../controllers/clientes')
 
-router.get('/', crearCliente)
-router.post('/', consultarCliente)
+router.post('/', crearCliente)
+router.get('/consultar', consultarCliente)
 router.put('/:id', modificarCliente)
 router.delete('/:id', eliminarCliente)
 

@@ -84,7 +84,7 @@ function crearUsuario(req, res,next) {
 
 // Función para obtener Usuarios
 
-function obtenerUsuarios(req, res) {
+function consultarUsuarios(req, res) {
   // Hace una consulta en la base de datos.
   User.findAll().then(users => {
     return res.json(users)
@@ -95,14 +95,14 @@ function obtenerUsuarios(req, res) {
 
 // Función para búsquedas más específicas
 
-function obtenerUsuarios(req, res) {
-  Model.findAll({
-  attributes: [idUsuario, nombre, apellidoPaterno],
-  where: {
-    email:'pam.nav88@gmail.com' // Verificar de dónde va salir este dato
-  }
-  });
-}
+// function obtenerUsuarios(req, res) {
+//   Model.findAll({
+//   attributes: [idUsuario, nombre, apellidoPaterno],
+//   where: {
+//     email:'pam.nav88@gmail.com' // Verificar de dónde va salir este dato
+//   }
+//   });
+// }
 
 // Función para modificar Usuario
 
@@ -134,4 +134,34 @@ function eliminarUsuario(req, res) {
       return res.sendStatus(500)
     })
   }
+}
+
+function login(req, res, next) {
+  if (!req.body.email) {
+    return res.status(422).json({ errors: { email: "no puede estar vacío" } });
+  }
+
+  if (!req.body.password) {
+    return res.status(422).json({ errors: { password: "no puede estar vacío" } });
+  }
+
+  // passport.authenticate('local', { session: false }, function (err, user, info) {
+  //   if (err) { return next(err); }
+
+  //   if (user) {
+  //     user.token = user.generarJWT();
+  //     return res.json({ user: user.toAuthJSON() });
+  //   } else {
+  //     return res.status(422).json(info);
+  //   }
+  // })(req, res, next);
+}
+
+// exportamos las funciones definidas
+module.exports = {
+  crearUsuario,
+  consultarUsuarios,
+  modificarUsuario,
+  eliminarUsuario,
+  login  
 }

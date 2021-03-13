@@ -1,4 +1,9 @@
 const Categoria = require('../models/Categoria')
+const express = require("express");
+const cate = express.Router();
+const cors = require("cors");
+cate.use(cors());
+
 
 function crearCategoria(req, res,next) {
     const ctg = Categoria.build(req.body)
@@ -9,12 +14,21 @@ function crearCategoria(req, res,next) {
     }).catch(next);
 }
 
+// cate.get("/consultar", (req, res) => {
+//     console.log("Entra a la ruta")
+//     Categoria.findAll().then(function(categoria) {
+//       res.json(categoria);
+//     });
+// });
 
 function consultarCategorias(req, res) {
+    console.log("Entra a la funcion ")
+    
     Categoria.findAll().then(categoria => {
         console.log("Entre a consultar categorias");
         return res.json(categoria)
     }).catch(error => {
+        console.log("Este es el error:", error)
         return res.sendStatus(401)
     })
 }

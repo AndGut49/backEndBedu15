@@ -9,7 +9,6 @@ const Cliente = require('../models/Cliente')
 
 function crearCliente(req, res,next) {
   const clnt= Cliente.build(req.body)
-
   clnt.save().then(cliente => {
     console.log("cree un nuevo cliente");
     return res.status(201).json(cliente.toAuthJSON())

@@ -1,16 +1,17 @@
 // Estructura del CRUD
-const router = require('express').Router();
+const router = require("express").Router();
+const cors = require("cors");
+router.use(cors());
 const {
     crearCategoria,
     consultarCategorias,
-    modificarCategoria, 
-    eliminarCategoria
-} = require('../controllers/categorias')
+    modificarCategoria,
+    eliminarCategoria,
+} = require("../controllers/categorias");
 
-router.get('/', crearCategoria)
-router.post('/', consultarCategorias)
-router.put('/:id', modificarCategoria)
-router.delete('/:id', eliminarCategoria)
+router.post("/", crearCategoria);
+router.get("/consultar", consultarCategorias);
+router.put("/:id", modificarCategoria);
+router.delete("/:id", eliminarCategoria);
 
 module.exports = router;
-
