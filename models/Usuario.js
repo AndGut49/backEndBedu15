@@ -10,16 +10,11 @@ const db = require("../config/db");
 const Usuario = db.sequelize.define(
     "usuario",
     {
-        id: {
+        idUsuario: {
             // se indica el tipo de dato de la columna.
             type: DataTypes.INTEGER,
             // indicamos que este campo es llave primaria
             primaryKey: true,
-        },
-        username: {
-            type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
-            allowNull: false,
         },
         nombre: DataTypes.STRING,
         apellidoPaterno: DataTypes.STRING,
@@ -27,7 +22,7 @@ const Usuario = db.sequelize.define(
         foto: DataTypes.STRING,
         edad: DataTypes.INTEGER,
         sexo: DataTypes.STRING,
-        ubicacion: DataTypes.STRING,
+        direccion: DataTypes.STRING,
         email: DataTypes.STRING,
         password: DataTypes.STRING,
         telefono: DataTypes.STRING,
