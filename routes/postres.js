@@ -8,7 +8,7 @@ const {
 } = require('../controllers/postres')
 
 router.post('/', crearPostre)
-router.get('/:id', consultarPostres)
+router.get('/consultar', consultarPostres)
 router.put('/:id', modificarPostre)
 router.delete('/:id', eliminarPostre)
 

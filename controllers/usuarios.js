@@ -86,7 +86,7 @@ function crearUsuario(req, res,next) {
 
 function consultarUsuarios(req, res) {
   // Hace una consulta en la base de datos.
-  User.findAll().then(users => {
+  Usuario.findAll().then(users => {
     return res.json(users)
   }).catch(error => {
     return res.sendStatus(401)

@@ -8,8 +8,8 @@ const {
     login
 } = require('../controllers/usuarios')
 
-router.get('/', crearUsuario)
-router.post('/', consultarUsuarios)
+router.post('/', crearUsuario)
+router.get('/consultar', consultarUsuarios)
 router.put('/:id', modificarUsuario)
 router.delete('/:id', eliminarUsuario)
 router.post('/:id',login)
