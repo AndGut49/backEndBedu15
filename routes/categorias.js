@@ -5,13 +5,17 @@ router.use(cors());
 const {
     crearCategoria,
     consultarCategorias,
+    consultarCategoria,
     modificarCategoria,
     eliminarCategoria,
+    consultarCategoriasLimite,
 } = require("../controllers/categorias");
 
-router.post("/", crearCategoria);
-router.get("/consultar", consultarCategorias);
-router.put("/:id", modificarCategoria);
-router.delete("/:id", eliminarCategoria);
+router.post("/crear", crearCategoria);
+router.get("/", consultarCategorias);
+router.get("/consultarlimite/:limit", consultarCategoriasLimite);
+router.get("/:id", consultarCategoria);
+router.put("/modificar/:id", modificarCategoria);
+router.delete("/eliminar/:id", eliminarCategoria);
 
 module.exports = router;
