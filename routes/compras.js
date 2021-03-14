@@ -7,8 +7,8 @@ const {
     eliminarCompra
 } = require('../controllers/compras')
 
-router.get('/', crearCompra)
-router.post('/', consultarCompras)
+router.post('/', crearCompra)
+router.get('/consultar', consultarCompras)
 router.put('/:id', modificarCompra)
 router.delete('/:id', eliminarCompra)
 

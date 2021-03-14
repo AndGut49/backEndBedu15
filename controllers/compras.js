@@ -12,7 +12,7 @@ function crearCompra(req, res,next) {
 }
 
 function consultarCompras(req, res) {
-  compra.findAll().then(compra => {
+  Compra.findAll().then(compra => {
     console.log("Entre consultar compra");
     return res.json(compra)
   }).catch(error => {
