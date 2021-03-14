@@ -13,26 +13,21 @@ const Categoria = db.sequelize.define(
     "categoria",
     {
         idCategoria: {
-            // se indica el tipo de dato de la columna.
             type: DataTypes.INTEGER,
-            // indicamos que este campo es llave primaria
             primaryKey: true,
-            // indicamos que el campo no admite valores null
             allowNull: false,
             AUTO_INCREMENT: true,
         },
         nombreCategoria: {
             type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
             allowNull: false,
         },
     },
     {
         timestamps: false,
         freezeTableName: true,
-        tableName: "categoria"
+        tableName: "categoria",
     }
-    
 );
-// exportamos el modelo.
+
 module.exports = Categoria;

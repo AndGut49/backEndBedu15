@@ -21,10 +21,11 @@ function consultarCategorias(req, res) {
             return res.sendStatus(401);
         });
 }
+
 function consultarCategoriasLimite(req, res) {
-    console.log("Este es el req.params.limit", req.params.limit)
-    const limite = parseInt(req.params.limit, 10)
-    Categoria.findAll({limit:limite})
+    console.log("Este es el req.params.limit", req.params.limit);
+    const limite = parseInt(req.params.limit, 10);
+    Categoria.findAll({ limit: limite })
         .then((categoria) => {
             console.log("Entre a consultar categorias");
             return res.json(categoria);
@@ -34,6 +35,19 @@ function consultarCategoriasLimite(req, res) {
             return res.sendStatus(401);
         });
 }
+
+function consultarCategoriasPorNombre(req, res) {
+    Categoria.findAll({ where: { ...req.body } })
+        .then((categoria) => {
+            console.log("Entre a consultar categorias por nombre");
+            return res.json(categoria);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+
 function consultarCategoria(req, res) {
     Categoria.findOne({
         where: {
@@ -42,12 +56,11 @@ function consultarCategoria(req, res) {
     })
         .then((categoria) => {
             console.log("Entre a consultar categoria");
-            if(categoria){
+            if (categoria) {
                 return res.json(categoria);
-            }else{
+            } else {
                 return res.sendStatus(404);
             }
-            
         })
         .catch((error) => {
             console.log("Este es el error:", error);
@@ -126,12 +139,12 @@ function eliminarCategoria(req, res) {
         });
 }
 
-// exportamos las funciones definidas
 module.exports = {
     crearCategoria,
     consultarCategorias,
-    consultarCategoriasLimite,
     consultarCategoria,
     modificarCategoria,
     eliminarCategoria,
+    consultarCategoriasLimite,
+    consultarCategoriasPorNombre,
 };

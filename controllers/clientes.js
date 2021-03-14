@@ -1,65 +1,164 @@
-/*  Archivo controllers/clientes.js
- *  Simulando la respuesta de objetos Cliente
- *  en un futuro aquí se utilizarán los modelos
- */
-
-// importamos el modelo de clientes
 const Cliente = require("../models/Cliente");
-
 function crearCliente(req, res, next) {
-    const clnt = Cliente.build(req.body);
-    clnt.save()
-        .then((cliente) => {
-            console.log("cree un nuevo cliente");
-            return res.status(201).json(cliente);
+    const ctg = Cliente.build(req.body);
+    ctg.save()
+        .then((Cliente) => {
+            console.log("Se crea nueva Cliente");
+            return res.sendStatus(201).json(Cliente);
         })
         .catch(next);
 }
 
-function consultarCliente(req, res) {
+function consultarClientes(req, res) {
     Cliente.findAll()
-        .then((cliente) => {
-            console.log("Entre consultar cliente");
-            return res.json(cliente);
+        .then((Cliente) => {
+            console.log("Entre a consultar Clientes");
+            return res.json(Cliente);
         })
         .catch((error) => {
+            console.log("Este es el error:", error);
             return res.sendStatus(401);
         });
 }
 
-function modificarCliente(req, res, next) {
-    const clnt = Cliente.create({
-        id: req.params.id,
-        ...req.body,
-    });
-    clnt.save()
-        .then((cliente) => {
-            console.log("Modifiquecliente");
-            return res.status(201).json(cliente.toAuthJSON());
+function consultarClientesLimite(req, res) {
+    console.log("Este es el req.params.limit", req.params.limit);
+    const limite = parseInt(req.params.limit, 10);
+    Cliente.findAll({ limit: limite })
+        .then((Cliente) => {
+            console.log("Entre a consultar Clientes");
+            return res.json(Cliente);
         })
-        .catch(next);
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+
+function consultarClientesPorAtributos(req, res) {
+    Cliente.findAll({ where: { ...req.body } })
+        .then((Cliente) => {
+            console.log("Entre a consultar Clientes");
+            return res.json(Cliente);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+
+function consultarClientesPorCampos(req, res) {
+    Cliente.findAll({
+        attributes: req.body.campos,
+    })
+        .then((Cliente) => {
+            console.log("Entre a consultar Clientes");
+            return res.json(Cliente);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+
+function consultarCliente(req, res) {
+    Cliente.findOne({
+        where: {
+            idCliente: req.params.id,
+        },
+    })
+        .then((Cliente) => {
+            console.log("Entre a consultar Cliente");
+            if (Cliente) {
+                return res.json(Cliente);
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(404);
+        });
+}
+
+function modificarCliente(req, res) {
+    Cliente.findOne({
+        where: {
+            idCliente: req.params.id,
+        },
+    })
+        .then((ClienteInfo) => {
+            if (ClienteInfo) {
+                Cliente.update(
+                    { ...req.body },
+                    {
+                        where: {
+                            idCliente: req.params.id,
+                        },
+                    }
+                )
+                    .then((Cliente) => {
+                        console.log("Actualice Cliente");
+                        return res.sendStatus(200).json(Cliente);
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "Este es el error en la funcion modificarCliente: ",
+                            err
+                        );
+                        return res.sendStatus(500);
+                    });
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Error en funcion eliminarCliente", error);
+            res.sendStatus(500);
+        });
 }
 
 function eliminarCliente(req, res) {
-    const clnt = Cliente.findByPk(req.cliente.id);
-    if (clnt === null) {
-        return res.sendStatus(401);
-    } else {
-        clnt.destroy()
-            .then((cliente) => {
-                console.log("Elimine cliente");
-                return res.status(200);
-            })
-            .catch((err) => {
-                return res.sendStatus(500);
-            });
-    }
+    Cliente.findOne({
+        where: {
+            idCliente: req.params.id,
+        },
+    })
+        .then((ClienteInfo) => {
+            if (ClienteInfo) {
+                Cliente.destroy({
+                    where: {
+                        idCliente: req.params.id,
+                    },
+                })
+                    .then((Cliente) => {
+                        console.log("Elimine Cliente");
+                        return res.sendStatus(200);
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "Este es el error en la funcion eliminaCliente: ",
+                            err
+                        );
+                        return res.sendStatus(500);
+                    });
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Error en funcion eliminarCliente", error);
+            res.sendStatus(500);
+        });
 }
 
-// exportamos las funciones definidas
 module.exports = {
     crearCliente,
+    consultarClientes,
     consultarCliente,
     modificarCliente,
     eliminarCliente,
+    consultarClientesLimite,
+    consultarClientesPorAtributos,
+    consultarClientesPorCampos,
 };

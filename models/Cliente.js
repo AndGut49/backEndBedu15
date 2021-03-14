@@ -12,32 +12,25 @@ const Cliente = db.sequelize.define(
     "cliente",
     {
         idCliente: {
-            // se indica el tipo de dato de la columna.
             type: DataTypes.INTEGER,
-            // indicamos que este campo es llave primaria
             primaryKey: true,
-            // indicamos que el campo no admite valores null
             allowNull: false,
             AUTO_INCREMENT: true,
         },
         nombre: {
             type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
             allowNull: false,
         },
         apellidoPaterno: {
             type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
             allowNull: false,
         },
         apellidoMaterno: {
             type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
             allowNull: false,
         },
         direccion: {
             type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
             allowNull: false,
         },
         direccion: {
@@ -45,12 +38,10 @@ const Cliente = db.sequelize.define(
         },
         email: {
             type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
             allowNull: false,
         },
         password: {
             type: DataTypes.STRING,
-            // indicamos que el campo no admite valores null
             allowNull: false,
         },
     },

@@ -6,14 +6,11 @@
 // const sequelize = new Sequelize("mysql::memory:");
 const { DataTypes } = require("sequelize");
 const db = require("../config/db");
-//creamos el modelo para usuario
 const Usuario = db.sequelize.define(
     "usuario",
     {
         idUsuario: {
-            // se indica el tipo de dato de la columna.
             type: DataTypes.INTEGER,
-            // indicamos que este campo es llave primaria
             primaryKey: true,
         },
         nombre: DataTypes.STRING,
@@ -34,5 +31,4 @@ const Usuario = db.sequelize.define(
     }
 );
 
-// exportamos el modelo.
 module.exports = Usuario;

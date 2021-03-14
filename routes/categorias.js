@@ -9,11 +9,13 @@ const {
     modificarCategoria,
     eliminarCategoria,
     consultarCategoriasLimite,
+    consultarCategoriasPorNombre,
 } = require("../controllers/categorias");
 
 router.post("/crear", crearCategoria);
 router.get("/", consultarCategorias);
 router.get("/consultarlimite/:limit", consultarCategoriasLimite);
+router.get("/consultarpornombre/", consultarCategoriasPorNombre);
 router.get("/:id", consultarCategoria);
 router.put("/modificar/:id", modificarCategoria);
 router.delete("/eliminar/:id", eliminarCategoria);

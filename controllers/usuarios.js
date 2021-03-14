@@ -1,167 +1,159 @@
-/*  Archivo controllers/usuarios.js
- *  Simulando la respuesta de objetos Usuario
- *  en un futuro aquí se utilizarán los modelos
- 
-
-// importamos el modelo de usuarios
-const Usuario = require('../models/Usuario')
-
-function crearUsuario(req, res,next) {
-  const usr = Usuario.build(req.body)
-
-  usr.save().then(user => {
-    console.log("cree un nuevo administrador");
-    return res.status(201).json(user.toAuthJSON())
-  }).catch(next);
+const Usuario = require("../models/Usuario");
+function crearUsuario(req, res, next) {
+    const ctg = Usuario.build(req.body);
+    ctg.save()
+        .then((Usuario) => {
+            console.log("Se crea nueva Usuario");
+            return res.sendStatus(201).json(Usuario);
+        })
+        .catch(next);
 }
 
 function consultarUsuarios(req, res) {
-  Usuario.findAll().then(user => {
-    console.log("Entre consultar administrador");
-    return res.json(user)
-  }).catch(error => {
-    return res.sendStatus(401)
-  })
+    Usuario.findAll()
+        .then((Usuario) => {
+            console.log("Entre a consultar Usuarios");
+            return res.json(Usuario);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+function consultarUsuariosLimite(req, res) {
+    console.log("Este es el req.params.limit", req.params.limit);
+    const limite = parseInt(req.params.limit, 10);
+    Usuario.findAll({ limit: limite })
+        .then((Usuario) => {
+            console.log("Entre a consultar Usuarios");
+            return res.json(Usuario);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+function consultarUsuariosPorAtributos(req, res) {
+    Usuario.findAll({ where: { ...req.body } })
+        .then((Usuario) => {
+            console.log("Entre a consultar Usuarios");
+            return res.json(Usuario);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+function consultarUsuariosPorCampos(req,res){
+    Usuario.findAll({
+        attributes: req.body.campos
+    }).then((Usuario) => {
+        console.log("Entre a consultar Usuarios");
+        return res.json(Usuario);
+    })
+    .catch((error) => {
+        console.log("Este es el error:", error);
+        return res.sendStatus(401);
+    });
+}
+function consultarUsuario(req, res) {
+    Usuario.findOne({
+        where: {
+            idUsuario: req.params.id,
+        },
+    })
+        .then((Usuario) => {
+            console.log("Entre a consultar Usuario");
+            if (Usuario) {
+                return res.json(Usuario);
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(404);
+        });
 }
 
 function modificarUsuario(req, res) {
-  const usr = Usuario.create({
-    id: req.params.id,
-    ...req.body
-  })
-  usr.save().then(user => {
-    console.log("Modifique usuario");
-    return res.status(201).json(user.toAuthJSON())
-  }).catch(next);
+    Usuario.findOne({
+        where: {
+            idUsuario: req.params.id,
+        },
+    })
+        .then((UsuarioInfo) => {
+            if (UsuarioInfo) {
+                Usuario.update(
+                    { ...req.body },
+                    {
+                        where: {
+                            idUsuario: req.params.id,
+                        },
+                    }
+                )
+                    .then((Usuario) => {
+                        console.log("Actualice Usuario");
+                        return res.sendStatus(200).json(Usuario);
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "Este es el error en la funcion modificarUsuario: ",
+                            err
+                        );
+                        return res.sendStatus(500);
+                    });
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Error en funcion eliminarUsuario", error);
+            res.sendStatus(500);
+        });
 }
 
 function eliminarUsuario(req, res) {
-  const usr = Usuario.findByPk(req.usuario.id);
-  if (usr === null) {
-    return res.sendStatus(401)
-  } else {
-    usr.destroy().then(user => {
-      console.log("Elimine usuario");
-      return res.status(200)
-    }).catch(err => {
-      return res.sendStatus(500)
+    Usuario.findOne({
+        where: {
+            idUsuario: req.params.id,
+        },
     })
-  }
+        .then((UsuarioInfo) => {
+            if (UsuarioInfo) {
+                Usuario.destroy({
+                    where: {
+                        idUsuario: req.params.id,
+                    },
+                })
+                    .then((Usuario) => {
+                        console.log("Elimine Usuario");
+                        return res.sendStatus(200);
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "Este es el error en la funcion eliminaUsuario: ",
+                            err
+                        );
+                        return res.sendStatus(500);
+                    });
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Error en funcion eliminarUsuario", error);
+            res.sendStatus(500);
+        });
 }
 
-function login (req,res){
-  const usr = Usuario.findByPk(req.usuario.id);
-  if (usr === null) {
-    return res.sendStatus(401)
-  } else {
-    return res.status(200).send(`Usuario con el id: ${req.usuario.id} inicio sesión`);
-  }
-}
-
-// exportamos las funciones definidas
 module.exports = {
-  crearUsuario,
-  consultarUsuarios,
-  modificarUsuario,
-  eliminarUsuario,
-  login
-} */
-
-// Importamos modelo Usuario
-
-const Usuario = require('../models/Usuario')
-
-// Función para crear nuevo registro de Usuario
-
-function crearUsuario(req, res,next) {
-  // construye una instancia del modelo Usuario con los argumentos que recibe en la petición
-  const usr = Usuario.build(req.body)
-  // Guarda esta instancia, es hasta este momento que se modifica la base de datos.
-  usr.save().then(user => {
-    return res.status(201).json(user.toAuthJSON())
-  }).catch(next);
-}
-
-// Función para obtener Usuarios
-
-function consultarUsuarios(req, res) {
-  // Hace una consulta en la base de datos.
-  Usuario.findAll().then(users => {
-    return res.json(users)
-  }).catch(error => {
-    return res.sendStatus(401)
-  })
-}
-
-// Función para búsquedas más específicas
-
-// function obtenerUsuarios(req, res) {
-//   Model.findAll({
-//   attributes: [idUsuario, nombre, apellidoPaterno],
-//   where: {
-//     email:'pam.nav88@gmail.com' // Verificar de dónde va salir este dato
-//   }
-//   });
-// }
-
-// Función para modificar Usuario
-
-function modificarUsuario(req, res,next) {
-  // Se crea un usuario con el id del que se quiere modificar y los cambios descritos en el body
-  const usr = User.create({
-    id : req.params.id,
-    ...req.body
-  })
-  // Se guarda en la DB
-  usr.save().then(user => {
-    return res.status(201).json(user.toAuthJSON())
-  }).catch(next);
-}
-
-// Función para eliminar Usuario
-
-function eliminarUsuario(req, res) {
-  // Usamos findByPK para buscar al usuario por su id
-  const usr = User.findByPk(req.usuario.id);
-  if (usr === null){
-    // si no existe lanzamos un 400 
-    return res.sendStatus(401)
-  } else {
-    // Si existe, lo eliminamos
-    usr.destroy().then(usr => {
-      return res.status(200)
-    }).catch(err => {
-      return res.sendStatus(500)
-    })
-  }
-}
-
-function login(req, res, next) {
-  if (!req.body.email) {
-    return res.status(422).json({ errors: { email: "no puede estar vacío" } });
-  }
-
-  if (!req.body.password) {
-    return res.status(422).json({ errors: { password: "no puede estar vacío" } });
-  }
-
-  // passport.authenticate('local', { session: false }, function (err, user, info) {
-  //   if (err) { return next(err); }
-
-  //   if (user) {
-  //     user.token = user.generarJWT();
-  //     return res.json({ user: user.toAuthJSON() });
-  //   } else {
-  //     return res.status(422).json(info);
-  //   }
-  // })(req, res, next);
-}
-
-// exportamos las funciones definidas
-module.exports = {
-  crearUsuario,
-  consultarUsuarios,
-  modificarUsuario,
-  eliminarUsuario,
-  login  
-}
+    crearUsuario,
+    consultarUsuarios,
+    consultarUsuario,
+    modificarUsuario,
+    eliminarUsuario,
+    consultarUsuariosLimite,
+    consultarUsuariosPorAtributos,
+    consultarUsuariosPorCampos
+};

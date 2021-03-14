@@ -1,15 +1,22 @@
-/* Rutas para la clase Pasteles */
 const router = require('express').Router();
 const {
     crearPostre,
     consultarPostres,
+    consultarPostre,
+    consultarPostresLimite,
     modificarPostre,
-    eliminarPostre
+    eliminarPostre,
+    consultarPostresPorAtributos,
+    consultarPostresPorCampos
 } = require('../controllers/postres')
 
-router.post('/', crearPostre)
-router.get('/consultar', consultarPostres)
-router.put('/:id', modificarPostre)
-router.delete('/:id', eliminarPostre)
+router.post("/crear", crearPostre);
+router.get("/", consultarPostres);
+router.get("/consultarlimite/:limit", consultarPostresLimite);
+router.get("/consultarporatributos/", consultarPostresPorAtributos);
+router.get("/consultarporcampos/", consultarPostresPorCampos);
+router.get("/:id", consultarPostre);
+router.put("/modificar/:id", modificarPostre);
+router.delete("/eliminar/:id", eliminarPostre);
 
 module.exports = router;

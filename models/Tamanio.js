@@ -7,23 +7,18 @@
 const { DataTypes } = require("sequelize");
 const db = require("../config/db");
 
-//creamos el modelo para tamanio
 const Tamanio = db.sequelize.define(
     "tamanio",
     {
         idTamanio: {
-            // se indica el tipo de dato de la columna.
             type: DataTypes.INTEGER,
-            // indicamos que este campo es llave primaria
             primaryKey: true,
-            // indicamos que el campo no admite valores null
             allowNull: false,
             AUTO_INCREMENT: true,
         },
         nombreTamanio: {
             type: DataTypes.STRING,
         },
-        // le decimos a que tabla de nuestra base de datos corresponde.
     },
     {
         timestamps: false,

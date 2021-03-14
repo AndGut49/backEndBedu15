@@ -1,15 +1,20 @@
-/* Rutas para la clase Sabores */
 const router = require('express').Router();
 const {
     crearSabor,
+    consultarSabores,
     consultarSabor,
     modificarSabor,
-    eliminarSabor
+    eliminarSabor,
+    consultarSaboresLimite,
+    consultarSaboresPorNombre,
 } = require('../controllers/sabores')
 
-router.post('/', crearSabor)
-router.get('/consultar', consultarSabor)
-router.put('/:id', modificarSabor)
-router.delete('/:id', eliminarSabor)
+router.post("/crear", crearSabor);
+router.get("/", consultarSabores);
+router.get("/consultarlimite/:limit", consultarSaboresLimite);
+router.get("/consultarpornombre/", consultarSaboresPorNombre);
+router.get("/:id", consultarSabor);
+router.put("/modificar/:id", modificarSabor);
+router.delete("/eliminar/:id", eliminarSabor);
 
 module.exports = router;

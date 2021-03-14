@@ -1,50 +1,151 @@
 
 const Tamanio = require('../models/Tamanio')
 
-function crearTamanio (req,res) {
-    const tmn = Tamanio.build(req.body)
-
-    tmn.save().then(tamnio => {
-        console.log("cree un nuevo tamanio");
-        return res.status(201).json(tamanio.toAuthJSON())
-    }).catch(next);
-}
-function consultarTamanio (req,res) {
-    Tamanio.findAll().then(tamanio => {
-        console.log("Entre consultar tamanio");
-        return res.json(tamanio)
-    }).catch(error => {
-        return res.sendStatus(401)
-    })
-}
-function modificarTamanio (req,res) {
-    const tmn = Tamanio.create({
-        id: req.params.id,
-        ...req.body
-    })
-    tmn.save().then(tamanio => {
-        console.log("Modifique tamanio");
-        return res.status(201).json(tamanio.toAuthJSON())
-    }).catch(next);
-}
-function eliminarTamanio (req,res) {
-    const tmn = Tamanio.findByPk(req.tamanio.id);
-    if (tmn === null) {
-        return res.sendStatus(401)
-    } else {
-        tmn.destroy().then(tamanio => {
-            console.log("Elimine tamanio");
-            return res.status(200)
-        }).catch(err => {
-            return res.sendStatus(500)
+function crearTamanio(req, res, next) {
+    const ctg = Tamanio.build(req.body);
+    ctg.save()
+        .then((Tamanio) => {
+            console.log("Se crea nueva Tamanio");
+            return res.sendStatus(201).json(Tamanio);
         })
-    }
-} 
+        .catch(next);
+}
 
-// exportamos las funciones definidas
+function consultarTamanios(req, res) {
+    Tamanio.findAll()
+        .then((Tamanio) => {
+            console.log("Entre a consultar Tamanios");
+            return res.json(Tamanio);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+
+function consultarTamaniosLimite(req, res) {
+    console.log("Este es el req.params.limit", req.params.limit);
+    const limite = parseInt(req.params.limit, 10);
+    Tamanio.findAll({ limit: limite })
+        .then((Tamanio) => {
+            console.log("Entre a consultar Tamanios");
+            return res.json(Tamanio);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+
+function consultarTamaniosPorNombre(req, res) {
+    Tamanio.findAll({ where: { ...req.body } })
+        .then((Tamanio) => {
+            console.log("Entre a consultar Tamanios");
+            return res.json(Tamanio);
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(401);
+        });
+}
+
+function consultarTamanio(req, res) {
+    Tamanio.findOne({
+        where: {
+            idTamanio: req.params.id,
+        },
+    })
+        .then((Tamanio) => {
+            console.log("Entre a consultar Tamanio");
+            if (Tamanio) {
+                return res.json(Tamanio);
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Este es el error:", error);
+            return res.sendStatus(404);
+        });
+}
+
+function modificarTamanio(req, res) {
+    Tamanio.findOne({
+        where: {
+            idTamanio: req.params.id,
+        },
+    })
+        .then((TamanioInfo) => {
+            if (TamanioInfo) {
+                Tamanio.update(
+                    { nombreTamanio: req.body.nombreTamanio },
+                    {
+                        where: {
+                            idTamanio: req.params.id,
+                        },
+                    }
+                )
+                    .then((Tamanio) => {
+                        console.log("Actualice Tamanio");
+                        return res.sendStatus(200).json(Tamanio);
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "Este es el error en la funcion modificarTamanio: ",
+                            err
+                        );
+                        return res.sendStatus(500);
+                    });
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Error en funcion eliminarTamanio", error);
+            res.sendStatus(500);
+        });
+}
+
+function eliminarTamanio(req, res) {
+    Tamanio.findOne({
+        where: {
+            idTamanio: req.params.id,
+        },
+    })
+        .then((TamanioInfo) => {
+            if (TamanioInfo) {
+                Tamanio.destroy({
+                    where: {
+                        idTamanio: req.params.id,
+                    },
+                })
+                    .then((Tamanio) => {
+                        console.log("Elimine Tamanio");
+                        return res.sendStatus(200);
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "Este es el error en la funcion eliminaTamanio: ",
+                            err
+                        );
+                        return res.sendStatus(500);
+                    });
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((error) => {
+            console.log("Error en funcion eliminarTamanio", error);
+            res.sendStatus(500);
+        });
+}
+
 module.exports = {
     crearTamanio,
+    consultarTamanios,
     consultarTamanio,
     modificarTamanio,
-    eliminarTamanio    
+    eliminarTamanio,
+    consultarTamaniosLimite,
+    consultarTamaniosPorNombre, 
 }

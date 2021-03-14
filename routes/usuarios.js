@@ -1,17 +1,22 @@
-// Estructura del CRUD
 const router = require('express').Router();
 const {
     crearUsuario,
     consultarUsuarios,
+    consultarUsuario,
+    consultarUsuariosLimite,
     modificarUsuario,
     eliminarUsuario,
-    login
+    consultarUsuariosPorAtributos,
+    consultarUsuariosPorCampos
 } = require('../controllers/usuarios')
 
-router.post('/', crearUsuario)
-router.get('/consultar', consultarUsuarios)
-router.put('/:id', modificarUsuario)
-router.delete('/:id', eliminarUsuario)
-router.post('/:id',login)
+router.post("/crear", crearUsuario);
+router.get("/", consultarUsuarios);
+router.get("/consultarlimite/:limit", consultarUsuariosLimite);
+router.get("/consultarporatributos/", consultarUsuariosPorAtributos);
+router.get("/consultarporcampos/", consultarUsuariosPorCampos);
+router.get("/:id", consultarUsuario);
+router.put("/modificar/:id", modificarUsuario);
+router.delete("/eliminar/:id", eliminarUsuario);
 
 module.exports = router;
