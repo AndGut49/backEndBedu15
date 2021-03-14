@@ -21,16 +21,17 @@ const Sabor = db.sequelize.define(
             AUTO_INCREMENT: true,
         },
         nombreSabor: {
-            type: DataTypes.STRING(40),
+            type: DataTypes.STRING,
             // indicamos que el campo no admite valores null
             allowNull: false,
         },
         // le decimos a que tabla de nuestra base de datos corresponde.
     },
-    { 
+    {
         timestamps: false,
         freezeTableName: true,
-        tableName: "sabor" }
+        tableName: "sabor",
+    }
 );
 
 module.exports = Sabor;

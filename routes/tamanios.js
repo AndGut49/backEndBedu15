@@ -7,8 +7,8 @@ const {
     consultarTamanio
 } = require('../controllers/tamanios')
 
-router.get('/', crearTamanio)
-router.post('/', consultarTamanio)
+router.post('/', crearTamanio)
+router.get('/consultar', consultarTamanio)
 router.put('/:id', eliminarTamanio)
 router.delete('/:id', modificarTamanio)
 
