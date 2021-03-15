@@ -73,7 +73,7 @@ Usuario (Usuario administrador)
 https://youtu.be/G4o7SDiKvr4
 
 ## API Documentada en Swagger ✔
-https://app.swaggerhub.com/apis/BEDU-equipo15/tiendaPostres/1.0.0
+https://app.swaggerhub.com/apis/BEDU-equipo15/tiendaPostres/1.0.0-oas3
 
 ## Link a Heroku de la API
 https://tiendapostresequipo15.herokuapp.com/v1
