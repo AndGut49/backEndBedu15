@@ -71,4 +71,5 @@ Usuario administrador
 - Usuario administrador: crearUsuario, modificarUsuario, consultarUsuarios, eliminarUsuario y login
 - Compra: crearCompra, modificarCompra, consultarCompras y eliminarCompra
  
-
+## Video explicativo 🎥🎞️
+https://youtu.be/G4o7SDiKvr4
