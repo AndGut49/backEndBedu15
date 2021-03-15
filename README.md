@@ -70,7 +70,7 @@ Usuario (Usuario administrador)
 - Compra: crearCompra, consultarCompras, consultarCompra, modificarCompra, eliminarCompra, consultarComprasLimite, consultarComprasPorAtributos, consultarComprasPorCampos
 
 ## Modelo E-R
-<img src="https://photos.google.com/share/AF1QipPTFixm5Tk1AeUPi8Z2JSHM3e730r02soWDbxEDyN4D7f8uuwtnZUSVBV2znBxsdA/photo/AF1QipNAWryfLlK9-SIF1HJZjFtPMUeK5nT6YSC2yJmY?key=MHFjcjA1Q1RqZHBLUFJfdm9kaklHbTVCRWZLVy1B">
+![ScreenShot](https://photos.google.com/share/AF1QipPTFixm5Tk1AeUPi8Z2JSHM3e730r02soWDbxEDyN4D7f8uuwtnZUSVBV2znBxsdA/photo/AF1QipNAWryfLlK9-SIF1HJZjFtPMUeK5nT6YSC2yJmY?key=MHFjcjA1Q1RqZHBLUFJfdm9kaklHbTVCRWZLVy1B)
  
 ## Video explicativo 🎥🎞️
 https://youtu.be/G4o7SDiKvr4
