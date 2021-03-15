@@ -68,9 +68,6 @@ Usuario (Usuario administrador)
 - Tamanio: crearTamanio, consultarTamanios, consultarTamanio, modificarTamanio, eliminarTamanio, consultarTamaniosLimite, consultarTamaniosPorNombre,
 - Usuario administrador: crearUsuario, consultarUsuarios, consultarUsuario, modificarUsuario, eliminarUsuario, consultarUsuariosLimite, consultarUsuariosPorAtributos,consultarUsuariosPorCampos
 - Compra: crearCompra, consultarCompras, consultarCompra, modificarCompra, eliminarCompra, consultarComprasLimite, consultarComprasPorAtributos, consultarComprasPorCampos
-
-## Modelo E-R
-![ScreenShot](https://photos.google.com/share/AF1QipPTFixm5Tk1AeUPi8Z2JSHM3e730r02soWDbxEDyN4D7f8uuwtnZUSVBV2znBxsdA/photo/AF1QipNAWryfLlK9-SIF1HJZjFtPMUeK5nT6YSC2yJmY?key=MHFjcjA1Q1RqZHBLUFJfdm9kaklHbTVCRWZLVy1B)
  
 ## Video explicativo 🎥🎞️
 https://youtu.be/G4o7SDiKvr4
