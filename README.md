@@ -2,15 +2,13 @@
 Proyecto de Backend Fundamentals Equipo 15
 
 # Integrantes 😎
-* Andrea Gutierrez
-* Pamela Navarro
-* Rafael Santos
-* Victos Lascares
+* Andrea Gutierrez Hernandez
+* Pamela Navarro Herrera
+* Rafael Alejandro Santos Trujillo
+* Victos Lascares Gallardo
 
 # Tematica del proyecto 📋
-Tienda de Postres en una ciudad
-Queremos que los clientes consulten la información de diversos postres como precio o disponibilidad que ofrece una tienda en cierta ciudad.
-
+Tienda de Postres, queremos que los clientes consulten la información de diversos postres como precio, categoria, sabor, tamaño o disponibilidad con la que se cuenta. También queremos poder consultar los datos de las compras que se han realizado.
 # Historias de usuario 🧑👧
 1. Como usuario de tiendaPostres, quiero ver todos los postres que manejan para poder conocer su precio.
 2. Como usuario de tiendaPostres, quiero ver todos los tamaños de un postre para poder elegir el mejor para cubrir mis necesidades.
@@ -24,7 +22,7 @@ Queremos que los clientes consulten la información de diversos postres como pre
 # Requerimientos y estructura del proyecto 📈
  
 ## ¿Qué espero que haga el proyecto? 📲💻
-Esperamos que los clientes de una Tienda de Postres puedan consultar los precios y existencia de los postres que se ofrecen.
+Esperamos que se pueda consultar la información de diferentes entidades como compras, clientes, usuarios, postres, sabores, categorias y tamaños. Esto es para simular una tienda de postres en la que se puede consultar los precios y existencia de los mismos.
 
 ## ¿Qué tipo de usuario tendrá nuestro sistema? 🕵️‍♀️🕵️‍♂️
 Nuestro sistema tendrá dos tipos de usuarios:
@@ -33,10 +31,10 @@ Nuestro sistema tendrá dos tipos de usuarios:
 
 ## ¿Qué acciones puede realizar cada usuario? 🙋‍♂️🙋‍♀️
 - Cliente: Podrá consultar precios y existencia de los postres.
-- Usuario administrador: Podrá añadir, modificar y eliminar precios y existencias de todos los productos.
+- Usuario administrador: Podrá consultar, añadir, modificar y eliminar postres, sabores, categorias y tamaños.
 
 ## ¿Qué información se necesita? 💾
-Se necesita la información de todos los productos que se manejan:
+Se necesita la información de todos los postres que se manejan:
 - Categoría de postre
 - Nombre del postre
 - Sabor del postre
@@ -46,30 +44,39 @@ Se necesita la información de todos los productos que se manejan:
 
 ## ¿Cuáles son las principales entidades? 📌
 Cliente
-Categoría de postre
-Postre
-Sabor del postre
-Tamaño
-Solicitud de Compra
-Usuario administrador
+Categoria (categoria del postre)
+Postre 
+Sabor (sabor del postre)
+Tamanio (Tamaño del postre)
+Compra (Compras realizadas)
+Usuario (Usuario administrador)
 
 ## ¿Qué características tiene cada entidad? 📊
-- Cliente: Se refiere al usuario que quiere consultar los precios y existencia de postres correspondientes a su ciudad de procedencia. (id, nombre, apellido, correo, contraseña)
-- Categoría de postre: Se refiere al tipo de postre (Pasteles, Gelatinas, Pays, Postres, Panqués, Productos de temporada). (id, nombreCategoria)
-- Postre: Se refiere a todos los postres. (id, nombrePostre, precio, stock, calificacion)
-- Sabor del postre: Se refiere al sabor del postre. (id, nombreSabor)
-- Tamaño: Se refiere a los tamaños en que se manejan los postres: único, individual, mini, chico y grande (id, nombreTamaño). 
-- Solicitud de Compra: Una solicitud puede ser creada por un Cliente para adquirir alguno de los productos que haya subido un administrador (idCompra, idCliente, idPostre, cantidad, formaPago, fechaCompra).
-- Usuario administrador: Un administrador puede crear, modificar y eliminar información de productos, tamaños y precios que verá el usuario. 
+- Cliente: Se refiere al usuario que quiere consultar los precios y existencia de postres correspondientes a su ciudad de procedencia. (idCliente, nombre, apellidoPaterno, apellidoMaterno, direccion, email, password)
+- Categoría de postre: Se refiere al tipo de postre (Pasteles, Gelatinas, Pays, Postres, Panqués, Productos de temporada). (idCategoria, nombreCategoria)
+- Postre: Se refiere a todos los postres. (idPostre,idCategoria, idSabor, idTamanio, nombre, precio, stock)
+- Sabor: Se refiere al sabor del postre. (idSabor, nombreSabor)
+- Tamanio: Se refiere a los tamaños en que se manejan los postres: único, individual, mini, chico y grande (idTamanio, nombreTamanio). 
+- Compra: Una solicitud puede ser creada por un Cliente para adquirir alguno de los productos que haya subido un administrador (idCompra, idCliente, idPostre, cantidad, formaPago, fechaCompra).
+- Usuario: Un administrador puede crear, modificar y eliminar información de productos, tamaños y precios que verá el usuario. 
 
 ## ¿Qué funcionalidades tiene cada entidad?📂
-- Cliente: crearCliente, modificarCliente, eliminarCliente y consultarCliente
-- Categoría: crearCategoria, consultarCategoria, modificarCategoria y eliminarCategoria
-- Postre: crearPostre, modificarPostre, eliminarPostre, consultarPostre, obtenerPostres y listaPostres
-- Sabor: crearSabor, modificarSabor, eliminarSabor y consultarSabor
-- Tamaño: crearTamaño, modificarTamaño, eliminarTamaño, consultarTamaños 
-- Usuario administrador: crearUsuario, modificarUsuario, consultarUsuarios, eliminarUsuario y login
-- Compra: crearCompra, modificarCompra, consultarCompras y eliminarCompra
+- Cliente: crearCliente, consultarClientes, consultarCliente, modificarCliente, eliminarCliente, consultarClientesLimite, consultarClientesPorAtributos consultarClientesPorCampos
+- Categoría: crearCategoria, consultarCategorias, consultarCategoria, modificarCategoria, eliminarCategoria, consultarCategoriasLimite, consultarCategoriasPorNombre,
+- Postre: crearPostre, consultarPostres, consultarPostre, modificarPostre, eliminarPostre, consultarPostresLimite, consultarPostresPorAtributos, consultarPostresPorCampos
+- Sabor: crearSabor, consultarSabores, consultarSabor, modificarSabor, eliminarSabor, consultarSaboresLimite, consultarSaboresPorNombre
+- Tamanio: crearTamanio, consultarTamanios, consultarTamanio, modificarTamanio, eliminarTamanio, consultarTamaniosLimite, consultarTamaniosPorNombre,
+- Usuario administrador: crearUsuario, consultarUsuarios, consultarUsuario, modificarUsuario, eliminarUsuario, consultarUsuariosLimite, consultarUsuariosPorAtributos,consultarUsuariosPorCampos
+- Compra: crearCompra, consultarCompras, consultarCompra, modificarCompra, eliminarCompra, consultarComprasLimite, consultarComprasPorAtributos, consultarComprasPorCampos
+
+## Modelo E-R
+<img src="https://photos.google.com/share/AF1QipPTFixm5Tk1AeUPi8Z2JSHM3e730r02soWDbxEDyN4D7f8uuwtnZUSVBV2znBxsdA/photo/AF1QipNAWryfLlK9-SIF1HJZjFtPMUeK5nT6YSC2yJmY?key=MHFjcjA1Q1RqZHBLUFJfdm9kaklHbTVCRWZLVy1B">
  
 ## Video explicativo 🎥🎞️
 https://youtu.be/G4o7SDiKvr4
+
+## API Documentada en Swagger ✔
+https://app.swaggerhub.com/apis/BEDU-equipo15/tiendaPostres/1.0.0
+
+## Link a Heroku de la API
+https://tiendapostresequipo15.herokuapp.com/v1

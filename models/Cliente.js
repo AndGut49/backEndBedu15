@@ -33,9 +33,6 @@ const Cliente = db.sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        direccion: {
-            type: DataTypes.STRING,
-        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
